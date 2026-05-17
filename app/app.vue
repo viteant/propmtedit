@@ -11,7 +11,7 @@ import SiteFooter from "~/components/SiteFooter.vue";
 
 const siteName = 'PromptEdit'
 const siteUrl = 'https://promptedit.com'
-const title = 'All-in-one AI creative studio for images, video, audio, templates, and plugins'
+const title = 'PromptEdit | All-in-one AI creative studio'
 const description = 'PromptEdit gives creators one place to generate images, videos, audio, templates, and editing assets with top AI tools using credits instead of juggling multiple subscriptions.'
 const ogImage = `${siteUrl}/images/logo.png`
 
@@ -29,7 +29,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@graph': [
           {
