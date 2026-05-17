@@ -8,6 +8,7 @@ const titleRef = ref<HTMLElement | null>(null)
 const copyRef = ref<HTMLElement | null>(null)
 const cardsRef = ref<HTMLElement | null>(null)
 const statsRef = ref<HTMLElement | null>(null)
+const isClient = ref(false)
 
 const {
   stackItems,
@@ -26,6 +27,7 @@ const {
 })
 
 onMounted(() => {
+  isClient.value = true
   init()
 })
 
@@ -159,13 +161,20 @@ onBeforeUnmount(() => {
               : 'border-secondary/75 hover:shadow-[8px_8px_0_var(--color-secondary)]'"
           >
             <div class="relative aspect-[45/13] w-full overflow-hidden">
-              <iframe
-                  :src="getWistiaEmbedUrl(item.wistiaId)"
-                  :title="item.title"
-                  class="pointer-events-none absolute inset-0 h-full w-full scale-[1.02]"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowfullscreen
-              />
+              <ClientOnly>
+                <iframe
+                    v-if="isClient"
+                    :src="getWistiaEmbedUrl(item.wistiaId)"
+                    :title="item.title"
+                    class="pointer-events-none absolute inset-0 h-full w-full scale-[1.02]"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen
+                />
+
+                <template #fallback>
+                  <div class="absolute inset-0 bg-canvas-stack" />
+                </template>
+              </ClientOnly>
 
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas-stack/72 via-canvas-stack/28 to-canvas-stack/8 transition duration-500 sm:from-canvas-stack/45 sm:via-canvas-stack/12 sm:to-transparent sm:group-hover:from-canvas-stack/92 sm:group-hover:via-canvas-stack/48 sm:group-hover:to-canvas-stack/12" />
               <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas-stack/82 via-transparent to-canvas-stack/12 transition duration-500 sm:from-canvas-stack/42 sm:group-hover:from-canvas-stack/88" />

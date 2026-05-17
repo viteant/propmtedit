@@ -9,6 +9,7 @@ const appsRef = ref<HTMLElement | null>(null)
 const videoRef = ref<HTMLElement | null>(null)
 const featuresRef = ref<HTMLElement | null>(null)
 const bgRef = ref<HTMLElement | null>(null)
+const isClient = ref(false)
 
 const {
   apps,
@@ -28,6 +29,7 @@ const {
 })
 
 onMounted(() => {
+  isClient.value = true
   init()
 })
 
@@ -204,13 +206,20 @@ onBeforeUnmount(() => {
             </div>
 
             <div class="relative aspect-video bg-ink">
-              <iframe
-                  :src="videoUrl"
-                  title="Editing plugin"
-                  class="absolute inset-0 h-full w-full"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowfullscreen
-              />
+              <ClientOnly>
+                <iframe
+                    v-if="isClient"
+                    :src="videoUrl"
+                    title="Editing plugin"
+                    class="absolute inset-0 h-full w-full"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen
+                />
+
+                <template #fallback>
+                  <div class="absolute inset-0 bg-ink" />
+                </template>
+              </ClientOnly>
             </div>
 
             <div class="pointer-events-none absolute inset-0 rounded-[1.6rem] ring-1 ring-inset ring-paper/10" />

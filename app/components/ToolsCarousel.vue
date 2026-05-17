@@ -13,6 +13,7 @@ const emit = defineEmits<{
 const carouselRef = defineModel<HTMLElement | null>('carouselRef')
 
 const activeVoiceTool = ref<ToolItem | null>(null)
+const isClient = ref(false)
 
 const toolIcons = {
   image: 'lucide:image',
@@ -78,6 +79,7 @@ watch(activeVoiceTool, (tool) => {
 })
 
 onMounted(() => {
+  isClient.value = true
   window.addEventListener('keydown', handleKeydown)
 })
 
@@ -116,17 +118,28 @@ onBeforeUnmount(() => {
         xl:w-[calc((100%-3.75rem)/4)]"
           @click="handleToolClick(tool)"
       >
-        <iframe
-            v-if="shouldShowEmbed(tool)"
-            :src="getWistiaEmbedUrl(tool)"
-            :title="tool.title"
-            class="absolute inset-0 h-full w-full"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-        />
+        <ClientOnly v-if="shouldShowEmbed(tool)">
+          <iframe
+              v-if="isClient"
+              :src="getWistiaEmbedUrl(tool)"
+              :title="tool.title"
+              class="absolute inset-0 h-full w-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+          />
+
+          <template #fallback>
+            <img
+                :src="tool.thumbnail"
+                :alt="tool.title"
+                class="absolute inset-0 h-full w-full object-cover"
+                draggable="false"
+            >
+          </template>
+        </ClientOnly>
 
         <img
-            v-else
+            v-if="!shouldShowEmbed(tool)"
             :src="tool.thumbnail"
             :alt="tool.title"
             class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
