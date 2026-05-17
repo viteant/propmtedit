@@ -27,14 +27,20 @@ export const useFinalCTA = ({
         ctx = gsap.context(() => {
             const mm = gsap.matchMedia()
 
-            ScrollTrigger.create({
-                trigger: sectionRef.value,
-                start: 'top top+=56',
-                end: '+=100%',
-                pin: true,
-                pinSpacing: false,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
+            mm.add('(min-width: 1024px)', () => {
+                const pinTrigger = ScrollTrigger.create({
+                    trigger: sectionRef.value,
+                    start: 'top top+=56',
+                    end: '+=100%',
+                    pin: true,
+                    pinSpacing: false,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                })
+
+                return () => {
+                    pinTrigger.kill()
+                }
             })
 
             gsap.fromTo(

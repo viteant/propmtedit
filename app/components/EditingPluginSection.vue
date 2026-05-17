@@ -38,14 +38,33 @@ onBeforeUnmount(() => {
 
 <template>
   <section
+      id="plugins"
       ref="sectionRef"
-      class="relative isolate overflow-hidden bg-canvas px-4 py-20 text-paper sm:px-6 lg:px-10 lg:py-24"
+      class="relative isolate min-w-full w-full overflow-hidden bg-canvas-system px-4 py-20 text-paper sm:px-6 lg:px-10 lg:py-24"
   >
+    <div
+        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-secondary to-transparent"
+    />
+
     <div
         ref="bgRef"
         class="pointer-events-none absolute inset-0 -z-30 opacity-[0.12]
       [background-image:linear-gradient(var(--fx-grid-paper)_1px,transparent_1px),linear-gradient(90deg,var(--fx-grid-paper)_1px,transparent_1px)]
       [background-size:54px_54px]"
+    />
+
+    <div
+        class="pointer-events-none absolute left-[4%] top-[8%] -z-20 text-[clamp(4.5rem,14vw,10rem)] font-black uppercase leading-none tracking-[-0.12em] text-paper/[0.04]"
+    >
+      ui
+    </div>
+
+    <div
+        class="pointer-events-none absolute right-[5%] top-[14%] -z-20 hidden h-[18rem] w-[18rem] border border-dashed border-secondary/18 lg:block"
+    />
+
+    <div
+        class="pointer-events-none absolute left-[8%] bottom-[14%] -z-20 hidden h-[10rem] w-[16rem] rotate-[-10deg] border border-accent/20 bg-accent/[0.03] lg:block"
     />
 
     <div
@@ -172,7 +191,7 @@ onBeforeUnmount(() => {
           <div
               class="relative overflow-hidden rounded-[1.6rem] border border-secondary/80 bg-surface shadow-[9px_9px_0_var(--color-primary)]"
           >
-            <div class="flex items-center justify-between border-b border-paper/10 bg-canvas/90 px-4 py-3">
+            <div class="flex items-center justify-between border-b border-paper/10 bg-canvas-system/90 px-4 py-3">
               <div class="flex items-center gap-2">
                 <span class="size-2 rounded-full bg-accent" />
                 <span class="size-2 rounded-full bg-secondary" />

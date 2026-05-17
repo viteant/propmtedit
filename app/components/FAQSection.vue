@@ -32,13 +32,27 @@ onBeforeUnmount(() => {
   <section
       id="faq"
       ref="sectionRef"
-      class="relative isolate overflow-hidden bg-canvas px-4 py-16 text-paper sm:px-6 lg:px-10 lg:py-20"
+      class="relative isolate min-w-full w-full overflow-hidden bg-canvas-doc px-4 py-16 text-paper sm:px-6 lg:px-10 lg:py-20"
   >
+    <div
+        class="pointer-events-none absolute left-0 top-0 -z-10 h-full w-8 bg-[repeating-linear-gradient(180deg,var(--color-paper)_0_14px,transparent_14px_28px)] opacity-25"
+    />
+
     <div
         ref="bgRef"
         class="pointer-events-none absolute inset-0 -z-30 opacity-[0.08]
       [background-image:linear-gradient(var(--fx-grid-paper)_1px,transparent_1px),linear-gradient(90deg,var(--fx-grid-paper)_1px,transparent_1px)]
       [background-size:54px_54px]"
+    />
+
+    <div
+        class="pointer-events-none absolute right-[5%] top-[8%] -z-20 text-[clamp(4rem,16vw,10rem)] font-black uppercase leading-none tracking-[-0.12em] text-paper/[0.04]"
+    >
+      faq
+    </div>
+
+    <div
+        class="pointer-events-none absolute left-[10%] top-[14%] -z-20 hidden h-[18rem] w-[11rem] rotate-[-6deg] border border-paper/10 bg-paper/[0.02] lg:block"
     />
 
     <div
@@ -99,7 +113,7 @@ onBeforeUnmount(() => {
             </span>
 
             <span
-                class="grid size-8 shrink-0 place-items-center rounded-lg border border-secondary/35 bg-surface text-secondary transition duration-300 ease-out"
+                class="grid size-8 shrink-0 place-items-center rounded-lg border border-secondary/35 bg-surface-doc text-secondary transition duration-300 ease-out"
                 :class="activeFAQ === faq.id ? 'rotate-45 border-accent/60 text-accent' : 'rotate-0'"
             >
               <NuxtIcon name="lucide:plus" class="text-lg" />

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import {useHeroAnimation} from "~/composables/useHeroAnimation";
+import { useSectionNavigation } from '~/composables/useSectionNavigation'
 
 const heroRef = ref<HTMLElement | null>(null)
 const videoScrollRef = ref<HTMLElement | null>(null)
 const videoCardRef = ref<HTMLElement | null>(null)
+const { scrollToSection } = useSectionNavigation()
 
 const {
   enterVideo,
@@ -22,8 +24,9 @@ onBeforeUnmount(destroyAnimation)
 
 <template>
   <section
+      id="start"
       ref="heroRef"
-      class="relative isolate min-h-[calc(100svh-5rem)] overflow-clip bg-canvas text-paper"
+      class="relative isolate min-h-[calc(100svh-5rem)] min-w-full w-full overflow-clip bg-canvas text-paper"
   >
     <div
         class="pointer-events-none absolute inset-0 -z-30 opacity-[0.16]
@@ -56,12 +59,14 @@ onBeforeUnmount(destroyAnimation)
           All-in-one AI creative studio
         </p>
 
-        <h1 class="text-[clamp(3.6rem,16vw,6.8rem)] font-black uppercase leading-[0.8] tracking-[-0.08em] lg:text-[clamp(5.5rem,8vw,9rem)]">
-          <span class="pe-title-line block">Create</span>
-          <span class="pe-title-line block text-primary">without</span>
-          <span class="pe-title-line block text-accent">tool</span>
-          <span class="pe-title-line block">chaos.</span>
-        </h1>
+        <div class="relative inline-block max-w-full">
+          <h1 class="relative text-[clamp(3.6rem,16vw,6.8rem)] font-black uppercase leading-[0.8] tracking-[-0.08em] lg:text-[clamp(5.5rem,8vw,9rem)]">
+            <span class="pe-title-line block">Create</span>
+            <span class="pe-title-line block text-primary [text-shadow:0_1px_7px_var(--fx-shadow-ink-panel)] lg:[text-shadow:none]">without</span>
+            <span class="pe-title-line block text-accent [text-shadow:0_1px_7px_var(--fx-shadow-ink-panel)] lg:[text-shadow:none]">tool</span>
+            <span class="pe-title-line block">chaos.</span>
+          </h1>
+        </div>
 
         <p class="pe-copy mt-7 max-w-xl text-base leading-7 text-paper/72 md:text-xl md:leading-9">
           Generate images, videos, audio, templates and creative assets with top AI models from one place.
@@ -69,20 +74,14 @@ onBeforeUnmount(destroyAnimation)
         </p>
 
         <div class="pe-actions mt-8 flex flex-col gap-4 sm:flex-row">
-          <NuxtLink
-              to="#start"
+          <button
+              type="button"
               class="inline-flex min-h-14 items-center justify-center gap-4 bg-accent px-6 text-sm font-black uppercase tracking-wide text-canvas shadow-[8px_8px_0_var(--color-primary)] transition hover:-translate-y-1 hover:shadow-[12px_12px_0_var(--color-primary)]"
+              @click="scrollToSection('#pricing')"
           >
             Start creating
             <span>↗</span>
-          </NuxtLink>
-
-          <NuxtLink
-              to="#demo"
-              class="inline-flex min-h-14 items-center justify-center border border-paper/25 bg-paper/5 px-6 text-sm font-black uppercase tracking-wide text-paper backdrop-blur-xl transition hover:bg-paper/10"
-          >
-            Watch demo
-          </NuxtLink>
+          </button>
         </div>
 
         <div class="pe-tags mt-8 flex flex-wrap gap-2">
@@ -100,11 +99,11 @@ onBeforeUnmount(destroyAnimation)
           class="relative grid min-h-[320px] place-items-center [perspective:1200px] sm:min-h-[430px] lg:min-h-[620px]">
         <div
             ref="videoScrollRef"
-            class="relative w-full max-w-[920px] origin-bottom-right will-change-transform"
+            class="relative mx-auto w-full max-w-[920px] will-change-transform lg:origin-bottom-right"
         >
           <div
               ref="videoCardRef"
-              class="w-full rotate-[-4deg] rounded-[1.6rem] border border-paper/20 bg-paper/10 p-3 shadow-[0_38px_110px_var(--fx-shadow-ink-hero),0_0_80px_var(--fx-glow-primary-strong)] backdrop-blur-2xl will-change-transform md:rounded-[2rem] md:p-4"
+              class="w-full rounded-[1.6rem] border border-paper/20 bg-paper/10 p-3 shadow-[0_38px_110px_var(--fx-shadow-ink-hero),0_0_80px_var(--fx-glow-primary-strong)] backdrop-blur-2xl will-change-transform lg:rotate-[-4deg] md:rounded-[2rem] md:p-4"
               @mouseenter="enterVideo"
               @mouseleave="leaveVideo"
           >

@@ -37,13 +37,31 @@ onBeforeUnmount(() => {
   <section
       id="testimonials"
       ref="sectionRef"
-      class="relative isolate overflow-hidden bg-canvas px-4 py-20 text-paper sm:px-6 lg:px-10 lg:py-28"
+      class="relative isolate min-w-full w-full overflow-hidden bg-canvas-proof px-4 py-20 text-paper sm:px-6 lg:px-10 lg:py-28"
   >
+    <div
+        class="pointer-events-none absolute left-0 top-0 -z-10 h-12 w-[16rem] bg-accent"
+    />
+
     <div
         ref="bgRef"
         class="pointer-events-none absolute inset-0 -z-30 opacity-[0.12]
       [background-image:linear-gradient(var(--fx-grid-paper)_1px,transparent_1px),linear-gradient(90deg,var(--fx-grid-paper)_1px,transparent_1px)]
       [background-size:54px_54px]"
+    />
+
+    <div
+        class="pointer-events-none absolute right-[4%] top-[8%] -z-20 text-[clamp(4rem,16vw,11rem)] font-black uppercase leading-none tracking-[-0.12em] text-paper/[0.04]"
+    >
+      proof
+    </div>
+
+    <div
+        class="pointer-events-none absolute left-[7%] bottom-[12%] -z-20 hidden h-[16rem] w-[12rem] -rotate-[7deg] border border-paper/10 bg-paper/[0.02] lg:block"
+    />
+
+    <div
+        class="pointer-events-none absolute right-[10%] bottom-[8%] -z-20 hidden h-6 w-[14rem] bg-[repeating-linear-gradient(90deg,var(--color-accent)_0_18px,transparent_18px_36px)] opacity-35 lg:block"
     />
 
     <div
@@ -100,7 +118,7 @@ onBeforeUnmount(() => {
         <article
             v-for="testimonial in testimonials"
             :key="testimonial.id"
-            class="group relative overflow-hidden rounded-[1.5rem] border bg-surface/90 p-5 shadow-[7px_7px_0_var(--fx-glow-primary-bold)] backdrop-blur-xl transition hover:-translate-y-1 sm:p-6"
+            class="group relative overflow-hidden rounded-[1.5rem] border bg-surface-proof/90 p-5 shadow-[7px_7px_0_var(--fx-glow-primary-bold)] backdrop-blur-xl transition hover:-translate-y-1 sm:p-6"
             :class="testimonial.accent === 'lime'
             ? 'border-accent/70 hover:shadow-[8px_8px_0_var(--color-accent)]'
             : 'border-secondary/70 hover:shadow-[8px_8px_0_var(--color-secondary)]'"
@@ -115,7 +133,7 @@ onBeforeUnmount(() => {
           <div class="relative z-10">
             <div class="flex items-center justify-between gap-4">
               <div
-                  class="relative size-16 overflow-hidden rounded-2xl border bg-canvas shadow-[4px_4px_0_var(--fx-glow-primary-bold)]"
+                  class="relative size-16 overflow-hidden rounded-2xl border bg-canvas-proof shadow-[4px_4px_0_var(--fx-glow-primary-bold)]"
                   :class="testimonial.accent === 'lime'
     ? 'border-accent/70'
     : 'border-secondary/70'"
@@ -182,7 +200,7 @@ onBeforeUnmount(() => {
               <div
                   v-for="point in fitPoints"
                   :key="point.id"
-                  class="flex gap-3 rounded-xl border border-paper/10 bg-canvas/60 px-4 py-3"
+                  class="flex gap-3 rounded-xl border border-paper/10 bg-canvas-proof/60 px-4 py-3"
               >
                 <span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-md border border-accent/45 bg-accent/10 text-accent">
                   <NuxtIcon name="lucide:check" class="text-xs" />
@@ -206,7 +224,7 @@ onBeforeUnmount(() => {
 
         <div
             ref="guaranteeRef"
-            class="relative overflow-hidden rounded-[1.6rem] border border-accent/70 bg-surface/90 p-5 shadow-[8px_8px_0_var(--color-accent)] backdrop-blur-xl sm:p-6 lg:p-7"
+            class="relative overflow-hidden rounded-[1.6rem] border border-accent/70 bg-surface-proof/90 p-5 shadow-[8px_8px_0_var(--color-accent)] backdrop-blur-xl sm:p-6 lg:p-7"
         >
           <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,var(--fx-glow-accent),transparent_45%)]" />
 
@@ -214,7 +232,7 @@ onBeforeUnmount(() => {
             <div class="flex justify-center">
               <div
                   ref="sealRef"
-                  class="relative grid size-44 place-items-center rounded-full border-2 border-accent bg-canvas shadow-[0_0_55px_var(--fx-glow-accent-strong)] sm:size-52"
+                  class="relative grid size-44 place-items-center rounded-full border-2 border-accent bg-canvas-proof shadow-[0_0_55px_var(--fx-glow-accent-strong)] sm:size-52"
               >
                 <div class="absolute inset-3 rounded-full border border-accent/35" />
                 <div class="absolute inset-7 rounded-full border border-dashed border-accent/50" />

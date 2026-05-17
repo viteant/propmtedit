@@ -204,13 +204,31 @@ onMounted(() => {
   <section
       id="tools"
       ref="sectionRef"
-      class="relative isolate z-30 min-h-screen w-full overflow-hidden bg-canvas px-4 pb-24 pt-24 text-paper sm:px-6 lg:mt-[280svh] lg:px-10 lg:pb-28 lg:pt-28"
+      class="relative isolate z-30 min-h-screen min-w-full w-full overflow-hidden bg-canvas-lab px-4 pb-24 pt-24 text-paper sm:px-6 lg:mt-[280svh] lg:px-10 lg:pb-28 lg:pt-28"
   >
     <div
         ref="bgRef"
         class="pointer-events-none absolute inset-0 -z-30 opacity-[0.12]
       [background-image:linear-gradient(var(--fx-grid-paper)_1px,transparent_1px),linear-gradient(90deg,var(--fx-grid-paper)_1px,transparent_1px)]
       [background-size:54px_54px]"
+    />
+
+    <div
+        class="pointer-events-none absolute inset-y-0 left-0 -z-20 w-10 bg-[repeating-linear-gradient(180deg,var(--color-accent)_0_22px,var(--color-ink)_22px_44px)]"
+    />
+
+    <div
+        class="pointer-events-none absolute right-[3%] top-[6%] -z-20 text-[clamp(5rem,18vw,13rem)] font-black uppercase leading-none tracking-[-0.12em] text-paper/[0.04]"
+    >
+      lab
+    </div>
+
+    <div
+        class="pointer-events-none absolute left-[14%] top-[18%] -z-20 h-[20rem] w-[20rem] rounded-full border border-paper/8"
+    />
+
+    <div
+        class="pointer-events-none absolute left-[18%] top-[22%] -z-20 h-[12rem] w-[12rem] rounded-full border border-dashed border-secondary/18"
     />
 
     <div
@@ -226,6 +244,10 @@ onMounted(() => {
     <div
         data-tools-panel
         class="pointer-events-none absolute bottom-[10%] left-[18%] -z-10 hidden h-[14rem] w-[20rem] rotate-[10deg] rounded-[2rem] border border-paper/8 bg-paper/[0.025] lg:block"
+    />
+
+    <div
+        class="pointer-events-none absolute bottom-[8%] right-[10%] -z-10 hidden h-6 w-[18rem] bg-[repeating-linear-gradient(90deg,var(--color-paper)_0_18px,transparent_18px_36px)] opacity-25 lg:block"
     />
 
     <div
@@ -268,7 +290,7 @@ onMounted(() => {
               class="group inline-flex shrink-0 items-center gap-3 rounded-xl border px-5 py-3 text-xs font-black uppercase tracking-[0.2em] transition"
               :class="activeCategory === category.id
               ? 'border-accent bg-accent text-ink shadow-[7px_7px_0_var(--color-primary)]'
-              : 'border-primary/80 bg-canvas/70 text-paper/70 hover:border-secondary hover:text-paper'"
+              : 'border-primary/80 bg-canvas-lab/70 text-paper/70 hover:border-secondary hover:text-paper'"
               @click="selectCategory(category.id)"
           >
             <span

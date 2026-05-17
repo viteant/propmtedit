@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useFinalCTA } from '~/composables/useFinalCTA'
+import { useSectionNavigation } from '~/composables/useSectionNavigation'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const titleRef = ref<HTMLElement | null>(null)
 const copyRef = ref<HTMLElement | null>(null)
 const actionsRef = ref<HTMLElement | null>(null)
 const orbitRef = ref<HTMLElement | null>(null)
+const { scrollToSection } = useSectionNavigation()
 
 const { init, destroy } = useFinalCTA({
   sectionRef,
@@ -27,13 +29,27 @@ onBeforeUnmount(() => {
 <template>
   <section
       ref="sectionRef"
-      class="relative z-10 flex min-h-[calc(100svh-3.5rem)] w-full items-center overflow-hidden bg-canvas px-4 py-20 text-paper sm:px-6 lg:px-10"
+      class="relative z-10 flex min-h-[calc(100svh-3.5rem)] min-w-full w-full items-center overflow-hidden bg-canvas-cta px-4 py-20 text-paper sm:px-6 lg:px-10"
   >
+    <div
+        class="pointer-events-none absolute left-0 top-0 -z-10 h-[12rem] w-[12rem] bg-primary"
+    />
+
     <div
         data-cta-grid
         class="pointer-events-none absolute inset-0 opacity-[0.12]
       [background-image:linear-gradient(var(--fx-grid-paper)_1px,transparent_1px),linear-gradient(90deg,var(--fx-grid-paper)_1px,transparent_1px)]
       [background-size:54px_54px]"
+    />
+
+    <div
+        class="pointer-events-none absolute right-[4%] top-[10%] -z-20 text-[clamp(5rem,18vw,13rem)] font-black uppercase leading-none tracking-[-0.12em] text-accent/[0.06]"
+    >
+      go
+    </div>
+
+    <div
+        class="pointer-events-none absolute bottom-[10%] left-[8%] -z-20 hidden h-[16rem] w-[22rem] -rotate-[10deg] border border-paper/10 bg-paper/[0.02] lg:block"
     />
 
     <div
@@ -93,18 +109,20 @@ onBeforeUnmount(() => {
             <button
                 type="button"
                 class="inline-flex items-center justify-center gap-3 rounded-none border border-accent bg-accent px-7 py-4 text-xs font-black uppercase tracking-[0.22em] text-ink shadow-[7px_7px_0_var(--color-primary)] transition hover:-translate-y-1 hover:shadow-[9px_9px_0_var(--color-secondary)]"
+                @click="scrollToSection('#pricing')"
             >
               Start creating
               <NuxtIcon name="lucide:arrow-up-right" class="text-lg" />
             </button>
 
-            <a
-                href="#pricing"
+            <button
+                type="button"
                 class="inline-flex items-center justify-center gap-3 rounded-none border border-paper/18 bg-paper/[0.035] px-7 py-4 text-xs font-black uppercase tracking-[0.22em] text-paper backdrop-blur-xl transition hover:border-secondary hover:text-secondary"
+                @click="scrollToSection('#pricing')"
             >
               View pricing
               <NuxtIcon name="lucide:badge-dollar-sign" class="text-lg" />
-            </a>
+            </button>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ import SiteFooter from "~/components/SiteFooter.vue";
 </script>
 
 <template>
-  <main class="min-h-screen overflow-x-hidden bg-canvas">
+  <main class="min-h-screen min-w-full overflow-x-hidden bg-canvas">
     <AppNavbar/>
     <SiteHero/>
     <BeforeAfterSection/>

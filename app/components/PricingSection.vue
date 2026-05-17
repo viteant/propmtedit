@@ -33,13 +33,31 @@ onBeforeUnmount(() => {
   <section
       id="pricing"
       ref="sectionRef"
-      class="relative isolate overflow-hidden bg-canvas px-4 pb-20 pt-14 text-paper sm:px-6 lg:px-10 lg:pb-24 lg:pt-18"
+      class="relative isolate min-w-full w-full overflow-hidden bg-canvas-pricing px-4 pb-20 pt-14 text-paper sm:px-6 lg:px-10 lg:pb-24 lg:pt-18"
   >
+    <div
+        class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-8 bg-[repeating-linear-gradient(90deg,var(--color-accent)_0_18px,var(--color-ink)_18px_36px)] opacity-70"
+    />
+
     <div
         ref="bgRef"
         class="pointer-events-none absolute inset-0 -z-30 opacity-[0.12]
       [background-image:linear-gradient(var(--fx-grid-paper)_1px,transparent_1px),linear-gradient(90deg,var(--fx-grid-paper)_1px,transparent_1px)]
       [background-size:54px_54px]"
+    />
+
+    <div
+        class="pointer-events-none absolute left-[6%] top-[10%] -z-20 text-[clamp(4rem,16vw,12rem)] font-black uppercase leading-none tracking-[-0.12em] text-paper/[0.04]"
+    >
+      39
+    </div>
+
+    <div
+        class="pointer-events-none absolute right-[5%] top-[16%] -z-20 hidden h-[18rem] w-[12rem] rotate-[8deg] border border-paper/10 bg-paper/[0.02] lg:block"
+    />
+
+    <div
+        class="pointer-events-none absolute left-[12%] bottom-[10%] -z-20 hidden h-8 w-[24rem] bg-[repeating-linear-gradient(90deg,var(--color-paper)_0_10px,transparent_10px_20px)] opacity-20 lg:block"
     />
 
     <div
@@ -98,7 +116,7 @@ onBeforeUnmount(() => {
         <article
             v-for="plan in plans"
             :key="plan.id"
-            class="group relative flex min-h-[470px] flex-col overflow-hidden rounded-[1.55rem] border bg-surface/90 p-5 shadow-[8px_8px_0_var(--fx-glow-primary-heavy)] backdrop-blur-xl transition hover:-translate-y-1 sm:p-6 lg:p-7"
+            class="group relative flex min-h-[470px] flex-col overflow-hidden rounded-[1.55rem] border bg-surface-pricing/90 p-5 shadow-[8px_8px_0_var(--fx-glow-primary-heavy)] backdrop-blur-xl transition hover:-translate-y-1 sm:p-6 lg:p-7"
             :class="plan.featured
             ? 'border-accent/85 hover:shadow-[9px_9px_0_var(--color-accent)]'
             : 'border-secondary/85 hover:shadow-[9px_9px_0_var(--color-secondary)]'"
@@ -223,7 +241,7 @@ onBeforeUnmount(() => {
           <span
               v-for="method in paymentMethods"
               :key="method"
-              class="rounded-lg border border-paper/10 bg-surface px-3 py-2 text-[10px] font-black uppercase tracking-[0.14em] text-paper/62"
+              class="rounded-lg border border-paper/10 bg-surface-pricing px-3 py-2 text-[10px] font-black uppercase tracking-[0.14em] text-paper/62"
           >
             {{ method }}
           </span>

@@ -6,7 +6,20 @@
   --color-accent: #caff00;
 
   --color-canvas: #03050b;
+  --color-canvas-compare: #09070d;
+  --color-canvas-lab: #03111a;
+  --color-canvas-system: #061018;
+  --color-canvas-stack: #0d1108;
+  --color-canvas-pricing: #120d07;
+  --color-canvas-proof: #0b0812;
+  --color-canvas-doc: #091015;
+  --color-canvas-cta: #120a18;
+
   --color-surface: #07101f;
+  --color-surface-stack: #10160e;
+  --color-surface-pricing: #171005;
+  --color-surface-proof: #130f1c;
+  --color-surface-doc: #0f171d;
   --color-panel: #0b1322;
   --color-panel-alt: #18263c;
 
@@ -61,4 +74,12 @@
   --fx-glow-info: rgb(69 217 255 / 0.35);
   --fx-glow-accent-soft-alt: rgb(217 255 56 / 0.28);
   --fx-glow-warning: rgb(255 123 115 / 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
 }

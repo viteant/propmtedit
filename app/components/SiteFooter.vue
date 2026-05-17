@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import { useSectionNavigation } from '~/composables/useSectionNavigation'
+
+const { scrollToSection } = useSectionNavigation()
+
 const navItems = [
+  { label: 'Workflow', href: '#workflow' },
   { label: 'Tools', href: '#tools' },
+  { label: 'Plugins', href: '#plugins' },
   { label: 'Creator Stack', href: '#creator-stack' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
@@ -19,11 +25,16 @@ const stackItems = [
   'Video Assets',
   'Sound Effects',
 ]
+
+const handleNavClick = (href: string) => {
+  scrollToSection(href)
+}
 </script>
 
 <template>
   <footer
-      class="relative z-30 -mt-[1px] flex min-h-screen w-screen items-center overflow-hidden bg-accent px-4 py-16 text-ink shadow-[0_-40px_120px_var(--fx-shadow-ink-panel)] sm:px-6 lg:px-10 lg:py-20"
+      data-site-footer
+      class="relative z-40 -mt-[1px] flex min-h-screen min-w-full w-full items-center overflow-hidden bg-accent px-4 py-16 text-ink shadow-[0_-40px_120px_var(--fx-shadow-ink-panel)] sm:px-6 lg:mt-[96svh] lg:rounded-t-[2rem] lg:px-10 lg:py-20"
   >
     <div
         class="pointer-events-none absolute inset-0 opacity-[0.16]
@@ -70,14 +81,15 @@ const stackItems = [
             </p>
 
             <div class="mt-4 grid gap-3">
-              <a
+              <button
                   v-for="item in navItems"
                   :key="item.label"
-                  :href="item.href"
+                  type="button"
                   class="w-fit text-sm font-black uppercase tracking-[0.14em] text-ink transition hover:translate-x-1"
+                  @click="handleNavClick(item.href)"
               >
                 {{ item.label }}
-              </a>
+              </button>
             </div>
           </div>
 

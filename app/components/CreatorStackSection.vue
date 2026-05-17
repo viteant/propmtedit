@@ -38,13 +38,31 @@ onBeforeUnmount(() => {
   <section
       id="creator-stack"
       ref="sectionRef"
-      class="relative isolate overflow-hidden bg-canvas px-4 py-20 text-paper sm:px-6 lg:px-10 lg:py-24"
+      class="relative isolate min-w-full w-full overflow-hidden bg-canvas-stack px-4 py-20 text-paper sm:px-6 lg:px-10 lg:py-24"
   >
+    <div
+        class="pointer-events-none absolute right-0 top-0 -z-10 h-full w-10 bg-[repeating-linear-gradient(180deg,var(--color-primary)_0_22px,transparent_22px_44px)] opacity-55"
+    />
+
     <div
         ref="bgRef"
         class="pointer-events-none absolute inset-0 -z-30 opacity-[0.12]
       [background-image:linear-gradient(var(--fx-grid-paper)_1px,transparent_1px),linear-gradient(90deg,var(--fx-grid-paper)_1px,transparent_1px)]
       [background-size:54px_54px]"
+    />
+
+    <div
+        class="pointer-events-none absolute left-[5%] top-[7%] -z-20 text-[clamp(4rem,15vw,11rem)] font-black uppercase leading-none tracking-[-0.12em] text-accent/[0.05]"
+    >
+      stack
+    </div>
+
+    <div
+        class="pointer-events-none absolute left-[6%] top-[22%] -z-20 hidden h-[22rem] w-[14rem] rotate-[-8deg] border border-paper/8 bg-paper/[0.02] lg:block"
+    />
+
+    <div
+        class="pointer-events-none absolute right-[14%] bottom-[12%] -z-20 hidden h-[14rem] w-[24rem] rotate-[8deg] border border-dashed border-accent/18 lg:block"
     />
 
     <div
@@ -135,7 +153,7 @@ onBeforeUnmount(() => {
               v-for="item in stackItems"
               :key="item.id"
               type="button"
-              class="group relative overflow-hidden rounded-[1.4rem] border bg-surface text-left shadow-[0_28px_80px_var(--fx-shadow-ink-card)] transition hover:-translate-y-1"
+              class="group relative overflow-hidden rounded-[1.4rem] border bg-surface-stack text-left shadow-[0_28px_80px_var(--fx-shadow-ink-card)] transition hover:-translate-y-1"
               :class="item.accent === 'lime'
               ? 'border-accent/75 hover:shadow-[8px_8px_0_var(--color-accent)]'
               : 'border-secondary/75 hover:shadow-[8px_8px_0_var(--color-secondary)]'"
@@ -149,14 +167,14 @@ onBeforeUnmount(() => {
                   allowfullscreen
               />
 
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas/72 via-canvas/28 to-canvas/8 transition duration-500 sm:from-canvas/45 sm:via-canvas/12 sm:to-transparent sm:group-hover:from-canvas/92 sm:group-hover:via-canvas/48 sm:group-hover:to-canvas/12" />
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/82 via-transparent to-canvas/12 transition duration-500 sm:from-canvas/42 sm:group-hover:from-canvas/88" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas-stack/72 via-canvas-stack/28 to-canvas-stack/8 transition duration-500 sm:from-canvas-stack/45 sm:via-canvas-stack/12 sm:to-transparent sm:group-hover:from-canvas-stack/92 sm:group-hover:via-canvas-stack/48 sm:group-hover:to-canvas-stack/12" />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas-stack/82 via-transparent to-canvas-stack/12 transition duration-500 sm:from-canvas-stack/42 sm:group-hover:from-canvas-stack/88" />
 
-              <div class="pointer-events-none absolute inset-x-0 bottom-0 p-3 opacity-100 transition duration-500 sm:translate-y-5 sm:p-5 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 lg:p-6">
-                <div class="grid gap-2 sm:gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div class="pointer-events-none absolute inset-x-0 bottom-0 p-3 opacity-100 transition duration-500 sm:translate-y-5 sm:p-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 lg:p-5">
+                <div class="grid gap-2 sm:gap-3 lg:grid-cols-[1fr_auto] lg:items-end">
                   <div>
                     <p
-                        class="mb-1 text-[0.52rem] font-black uppercase tracking-[0.2em] sm:mb-2 sm:text-[0.66rem] sm:tracking-[0.24em]"
+                        class="mb-1 text-[0.46rem] font-black uppercase tracking-[0.18em] sm:text-[0.58rem] sm:tracking-[0.22em]"
                         :class="item.accent === 'lime'
                         ? 'text-accent'
                         : 'text-secondary'"
@@ -164,17 +182,17 @@ onBeforeUnmount(() => {
                       {{ item.eyebrow }}
                     </p>
 
-                    <h3 class="text-[clamp(1.05rem,8vw,1.65rem)] font-black uppercase leading-[0.82] tracking-[-0.07em] sm:text-[clamp(2rem,4.2vw,4.2rem)] sm:tracking-[-0.08em]">
+                    <h3 class="text-[clamp(0.95rem,6vw,1.4rem)] font-black uppercase leading-[0.84] tracking-[-0.06em] sm:text-[clamp(1.35rem,3vw,2.6rem)] sm:tracking-[-0.075em]">
                       {{ item.title }}
                     </h3>
 
-                    <p class="mt-1 line-clamp-1 max-w-2xl text-[0.68rem] leading-4 text-paper/68 sm:mt-2 sm:text-sm sm:leading-5 md:text-base md:leading-6">
+                    <p class="mt-1 hidden max-w-xl text-[0.72rem] leading-4 text-paper/68 md:line-clamp-1 md:block md:text-[0.82rem] md:leading-5 lg:max-w-2xl lg:text-sm">
                       {{ item.description }}
                     </p>
                   </div>
 
                   <span
-                      class="inline-flex w-fit rounded-none border px-2 py-1.5 text-[0.52rem] font-black uppercase tracking-[0.14em] sm:px-4 sm:py-3 sm:text-[0.7rem] sm:tracking-[0.18em]"
+                      class="inline-flex w-fit rounded-none border px-2 py-1 text-[0.46rem] font-black uppercase tracking-[0.12em] sm:px-3 sm:py-2 sm:text-[0.58rem] sm:tracking-[0.16em] lg:px-4 lg:py-2.5 lg:text-[0.66rem]"
                       :class="item.accent === 'lime'
                       ? 'border-accent/55 bg-accent/10 text-accent'
                       : 'border-secondary/55 bg-secondary/10 text-secondary'"

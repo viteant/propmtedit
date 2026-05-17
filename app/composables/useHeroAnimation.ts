@@ -15,7 +15,11 @@ export const useHeroAnimation = ({
                                            }: UseHeroAnimationOptions) => {
     let ctx: gsap.Context | null = null
 
+    const isDesktopHero = () => window.matchMedia('(min-width: 1024px)').matches
+
     const enterVideo = () => {
+        if (!videoCardRef.value || !isDesktopHero()) return
+
         gsap.to(videoCardRef.value, {
             rotate: 0,
             scale: 1.025,
@@ -26,6 +30,8 @@ export const useHeroAnimation = ({
     }
 
     const leaveVideo = () => {
+        if (!videoCardRef.value || !isDesktopHero()) return
+
         gsap.to(videoCardRef.value, {
             rotate: -4,
             scale: 1,
@@ -49,29 +55,6 @@ export const useHeroAnimation = ({
                 stagger: 0.08,
                 duration: 0.8,
                 ease: 'power3.out',
-            })
-
-            gsap.from(videoScrollRef.value, {
-                opacity: 0,
-                x: 80,
-                scale: 0.92,
-                duration: 1,
-                ease: 'power4.out',
-            })
-
-            gsap.to(videoScrollRef.value, {
-                scrollTrigger: {
-                    trigger: heroRef.value,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 1,
-                },
-                x: 180,
-                y: 170,
-                rotate: 13,
-                scale: 0.82,
-                transformOrigin: '100% 100%',
-                ease: 'none',
             })
 
             gsap.to('.pe-blue-plane', {
@@ -100,6 +83,29 @@ export const useHeroAnimation = ({
             })
 
             mm.add('(min-width: 1024px)', () => {
+                gsap.from(videoScrollRef.value, {
+                    opacity: 0,
+                    x: 80,
+                    scale: 0.92,
+                    duration: 1,
+                    ease: 'power4.out',
+                })
+
+                gsap.to(videoScrollRef.value, {
+                    scrollTrigger: {
+                        trigger: heroRef.value,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 1,
+                    },
+                    x: 180,
+                    y: 170,
+                    rotate: 13,
+                    scale: 0.82,
+                    transformOrigin: '100% 100%',
+                    ease: 'none',
+                })
+
                 gsap.to('.pe-scanline', {
                     xPercent: 16,
                     yPercent: -12,
@@ -117,9 +123,34 @@ export const useHeroAnimation = ({
                     yoyo: true,
                     ease: 'sine.inOut',
                 })
+
+                return () => {
+                    gsap.set(videoScrollRef.value, { clearProps: 'transform' })
+                    gsap.set(videoCardRef.value, { clearProps: 'transform' })
+                }
             })
 
             mm.add('(max-width: 1023px)', () => {
+                gsap.from(videoScrollRef.value, {
+                    opacity: 0,
+                    y: 36,
+                    scale: 0.98,
+                    duration: 0.9,
+                    ease: 'power3.out',
+                })
+
+                gsap.set(videoScrollRef.value, {
+                    x: 0,
+                    y: 0,
+                    rotate: 0,
+                    scale: 1,
+                })
+
+                gsap.set(videoCardRef.value, {
+                    rotate: 0,
+                    scale: 1,
+                })
+
                 gsap.to('.pe-scanline', {
                     xPercent: 8,
                     yPercent: -6,
