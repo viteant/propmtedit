@@ -135,95 +135,6 @@ export const useCreatorStack = ({
         ctx = gsap.context(() => {
             const mm = gsap.matchMedia()
 
-            gsap.fromTo(
-                introRef.value,
-                {
-                    y: 50,
-                    opacity: 0,
-                    scale: 0.98,
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    scale: 1,
-                    ease: 'power4.out',
-                    scrollTrigger: {
-                        trigger: sectionRef.value,
-                        start: 'top 82%',
-                        end: 'top 58%',
-                        scrub: 1,
-                    },
-                },
-            )
-
-            gsap.to(titleRef.value, {
-                xPercent: -8,
-                opacity: 0.84,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: sectionRef.value,
-                    start: 'top 40%',
-                    end: 'bottom bottom',
-                    scrub: true,
-                },
-            })
-
-            gsap.to(copyRef.value, {
-                x: -30,
-                opacity: 0.5,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: sectionRef.value,
-                    start: 'top 45%',
-                    end: 'bottom bottom',
-                    scrub: true,
-                },
-            })
-
-            gsap.fromTo(
-                cardsRef.value?.children ?? [],
-                {
-                    x: 90,
-                    y: 30,
-                    opacity: 0,
-                    scale: 0.97,
-                },
-                {
-                    x: 0,
-                    y: 0,
-                    opacity: 1,
-                    scale: 1,
-                    stagger: 0.08,
-                    ease: 'power4.out',
-                    scrollTrigger: {
-                        trigger: sectionRef.value,
-                        start: 'top 68%',
-                        end: 'top 18%',
-                        scrub: 1,
-                    },
-                },
-            )
-
-            gsap.fromTo(
-                statsRef.value?.children ?? [],
-                {
-                    y: 24,
-                    opacity: 0,
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    stagger: 0.05,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: sectionRef.value,
-                        start: 'top 55%',
-                        end: 'top 20%',
-                        scrub: 1,
-                    },
-                },
-            )
-
             gsap.to(bgRef.value, {
                 yPercent: -8,
                 ease: 'none',
@@ -236,6 +147,95 @@ export const useCreatorStack = ({
             })
 
             mm.add('(min-width: 1024px)', () => {
+                gsap.fromTo(
+                    introRef.value,
+                    {
+                        y: 50,
+                        opacity: 0,
+                        scale: 0.98,
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        ease: 'power4.out',
+                        scrollTrigger: {
+                            trigger: sectionRef.value,
+                            start: 'top 82%',
+                            end: 'top 58%',
+                            scrub: 1,
+                        },
+                    },
+                )
+
+                gsap.to(titleRef.value, {
+                    xPercent: -8,
+                    opacity: 0.84,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: sectionRef.value,
+                        start: 'top 40%',
+                        end: 'bottom bottom',
+                        scrub: true,
+                    },
+                })
+
+                gsap.to(copyRef.value, {
+                    x: -30,
+                    opacity: 0.5,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: sectionRef.value,
+                        start: 'top 45%',
+                        end: 'bottom bottom',
+                        scrub: true,
+                    },
+                })
+
+                gsap.fromTo(
+                    cardsRef.value?.children ?? [],
+                    {
+                        x: 90,
+                        y: 30,
+                        opacity: 0,
+                        scale: 0.97,
+                    },
+                    {
+                        x: 0,
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        stagger: 0.08,
+                        ease: 'power4.out',
+                        scrollTrigger: {
+                            trigger: sectionRef.value,
+                            start: 'top 68%',
+                            end: 'top 18%',
+                            scrub: 1,
+                        },
+                    },
+                )
+
+                gsap.fromTo(
+                    statsRef.value?.children ?? [],
+                    {
+                        y: 24,
+                        opacity: 0,
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.05,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: sectionRef.value,
+                            start: 'top 55%',
+                            end: 'top 20%',
+                            scrub: 1,
+                        },
+                    },
+                )
+
                 gsap.to('[data-creator-beam]', {
                     xPercent: 12,
                     yPercent: -10,
@@ -263,6 +263,63 @@ export const useCreatorStack = ({
                     yoyo: true,
                     ease: 'sine.inOut',
                 })
+            })
+
+            mm.add('(max-width: 1023px)', () => {
+                gsap.fromTo(
+                    introRef.value,
+                    {
+                        y: 20,
+                        opacity: 0,
+                    },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.7,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: sectionRef.value,
+                            start: 'top 84%',
+                            once: true,
+                        },
+                    },
+                )
+
+                gsap.fromTo(
+                    cardsRef.value?.children ?? [],
+                    {
+                        opacity: 0,
+                    },
+                    {
+                        opacity: 1,
+                        duration: 0.45,
+                        stagger: 0.08,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: sectionRef.value,
+                            start: 'top 74%',
+                            once: true,
+                        },
+                    },
+                )
+
+                gsap.fromTo(
+                    statsRef.value?.children ?? [],
+                    {
+                        opacity: 0,
+                    },
+                    {
+                        opacity: 1,
+                        duration: 0.35,
+                        stagger: 0.05,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: sectionRef.value,
+                            start: 'top 68%',
+                            once: true,
+                        },
+                    },
+                )
             })
 
             mm.add('(max-width: 1023px)', () => {

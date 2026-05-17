@@ -37,110 +37,6 @@ onMounted(() => {
   const ctx = gsap.context(() => {
     const mm = gsap.matchMedia()
 
-    gsap.fromTo(
-        contentRef.value,
-        {
-          y: 130,
-          opacity: 0,
-          scale: 0.97,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 82%',
-            end: 'top 38%',
-            scrub: 1,
-          },
-        },
-    )
-
-    gsap.fromTo(
-        titleRef.value,
-        {
-          y: 70,
-          opacity: 0,
-          rotate: -1.5,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          rotate: 0,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 74%',
-            end: 'top 48%',
-            scrub: 1,
-          },
-        },
-    )
-
-    gsap.fromTo(
-        textRef.value,
-        {
-          y: 45,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 68%',
-            end: 'top 42%',
-            scrub: 1,
-          },
-        },
-    )
-
-    gsap.fromTo(
-        chipsRef.value?.children ?? [],
-        {
-          y: 34,
-          opacity: 0,
-          rotate: -4,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          rotate: 0,
-          stagger: 0.08,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 64%',
-            end: 'top 38%',
-            scrub: 1,
-          },
-        },
-    )
-
-    gsap.fromTo(
-        carouselWrapRef.value,
-        {
-          y: 100,
-          opacity: 0,
-          scale: 0.96,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: 'top 58%',
-            end: 'top 24%',
-            scrub: 1.15,
-          },
-        },
-    )
-
     gsap.to(bgRef.value, {
       yPercent: -8,
       ease: 'none',
@@ -153,6 +49,110 @@ onMounted(() => {
     })
 
     mm.add('(min-width: 1024px)', () => {
+      gsap.fromTo(
+          contentRef.value,
+          {
+            y: 130,
+            opacity: 0,
+            scale: 0.97,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 82%',
+              end: 'top 38%',
+              scrub: 1,
+            },
+          },
+      )
+
+      gsap.fromTo(
+          titleRef.value,
+          {
+            y: 70,
+            opacity: 0,
+            rotate: -1.5,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            rotate: 0,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 74%',
+              end: 'top 48%',
+              scrub: 1,
+            },
+          },
+      )
+
+      gsap.fromTo(
+          textRef.value,
+          {
+            y: 45,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 68%',
+              end: 'top 42%',
+              scrub: 1,
+            },
+          },
+      )
+
+      gsap.fromTo(
+          chipsRef.value?.children ?? [],
+          {
+            y: 34,
+            opacity: 0,
+            rotate: -4,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            rotate: 0,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 64%',
+              end: 'top 38%',
+              scrub: 1,
+            },
+          },
+      )
+
+      gsap.fromTo(
+          carouselWrapRef.value,
+          {
+            y: 100,
+            opacity: 0,
+            scale: 0.96,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 58%',
+              end: 'top 24%',
+              scrub: 1.15,
+            },
+          },
+      )
+
       gsap.to('[data-tools-arc]', {
         rotate: 360,
         duration: 24,
@@ -180,6 +180,61 @@ onMounted(() => {
     })
 
     mm.add('(max-width: 1023px)', () => {
+      gsap.fromTo(
+          [contentRef.value, titleRef.value, textRef.value],
+          {
+            opacity: 0,
+            y: 18,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 84%',
+              once: true,
+            },
+          },
+      )
+
+      gsap.fromTo(
+          chipsRef.value?.children ?? [],
+          {
+            opacity: 0,
+          },
+          {
+            opacity: 1,
+            duration: 0.3,
+            stagger: 0.06,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 78%',
+              once: true,
+            },
+          },
+      )
+
+      gsap.fromTo(
+          carouselWrapRef.value,
+          {
+            opacity: 0,
+          },
+          {
+            opacity: 1,
+            duration: 0.45,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: 'top 72%',
+              once: true,
+            },
+          },
+      )
+
       gsap.to('[data-tools-sweep]', {
         xPercent: -6,
         duration: 6,
