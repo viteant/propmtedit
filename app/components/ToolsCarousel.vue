@@ -28,9 +28,13 @@ const getWistiaEmbedUrl = (tool: ToolItem) => {
   const wistiaId = getWistiaId(tool.wistiaUrl)
 
   const params = new URLSearchParams({
+    background: tool.category === 'voice' ? 'false' : 'true',
     autoPlay: 'true',
     muted: tool.category === 'voice' ? 'false' : 'true',
     loop: tool.category === 'voice' ? 'false' : 'true',
+    playsinline: 'true',
+    seo: 'false',
+    videoFoam: 'true',
     playbar: tool.category === 'voice' ? 'true' : 'false',
     controlsVisibleOnLoad: tool.category === 'voice' ? 'true' : 'false',
     fullscreenButton: 'true',
@@ -117,7 +121,7 @@ onBeforeUnmount(() => {
             :src="getWistiaEmbedUrl(tool)"
             :title="tool.title"
             class="absolute inset-0 h-full w-full"
-            allow="autoplay; fullscreen"
+            allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
         />
 

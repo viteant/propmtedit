@@ -208,7 +208,7 @@ onBeforeUnmount(() => {
                   :src="videoUrl"
                   title="Editing plugin"
                   class="absolute inset-0 h-full w-full"
-                  allow="autoplay; fullscreen"
+                  allow="autoplay; fullscreen; picture-in-picture"
                   allowfullscreen
               />
             </div>

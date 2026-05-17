@@ -42,9 +42,13 @@ export const useEditingPluginSection = ({
 
     const videoUrl = computed(() => {
         const params = new URLSearchParams({
+            background: 'true',
             autoPlay: 'true',
             muted: 'true',
             loop: 'true',
+            playsinline: 'true',
+            seo: 'false',
+            videoFoam: 'true',
             playbar: 'false',
             controlsVisibleOnLoad: 'false',
             fullscreenButton: 'false',

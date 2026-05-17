@@ -163,7 +163,7 @@ onBeforeUnmount(() => {
                   :src="getWistiaEmbedUrl(item.wistiaId)"
                   :title="item.title"
                   class="pointer-events-none absolute inset-0 h-full w-full scale-[1.02]"
-                  allow="autoplay; fullscreen"
+                  allow="autoplay; fullscreen; picture-in-picture"
                   allowfullscreen
               />
 
