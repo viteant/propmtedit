@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #084cff;
+  --color-secondary: #35aef5;
+  --color-accent: #caff00;
+
+  --color-canvas: #03050b;
+  --color-surface: #07101f;
+  --color-panel: #0b1322;
+  --color-panel-alt: #18263c;
+
+  --color-paper: #ffffff;
+  --color-ink: #000000;
+
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+
+  --color-primary-soft: #9ea6ff;
+  --color-primary-tint: #b9b8ff;
+  --color-primary-deep: #241b5f;
+  --color-primary-deeper: #120c39;
+
+  --color-accent-soft: #d9ff38;
+  --color-info: #45d9ff;
+  --color-warning: #ff7b73;
+}
+
+:root {
+  --fx-grid-paper: rgb(255 255 255 / 0.08);
+  --fx-grid-ink: rgb(0 0 0 / 0.18);
+
+  --fx-shadow-ink-soft: rgb(0 0 0 / 0.24);
+  --fx-shadow-ink-card: rgb(0 0 0 / 0.42);
+  --fx-shadow-ink-panel: rgb(0 0 0 / 0.45);
+  --fx-shadow-ink-strong: rgb(0 0 0 / 0.48);
+  --fx-shadow-ink-hero: rgb(0 0 0 / 0.55);
+
+  --fx-glow-paper-soft: rgb(255 255 255 / 0.08);
+  --fx-glow-paper: rgb(255 255 255 / 0.18);
+
+  --fx-glow-primary-soft: rgb(8 76 255 / 0.28);
+  --fx-glow-primary: rgb(8 76 255 / 0.42);
+  --fx-glow-primary-strong: rgb(8 76 255 / 0.45);
+  --fx-glow-primary-bold: rgb(8 76 255 / 0.55);
+  --fx-glow-primary-heavy: rgb(8 76 255 / 0.62);
+  --fx-glow-primary-hero: rgb(8 76 255 / 0.7);
+
+  --fx-glow-secondary-soft: rgb(53 174 245 / 0.16);
+  --fx-glow-secondary: rgb(53 174 245 / 0.18);
+  --fx-glow-secondary-strong: rgb(53 174 245 / 0.28);
+  --fx-glow-secondary-bold: rgb(53 174 245 / 0.42);
+  --fx-glow-secondary-heavy: rgb(53 174 245 / 0.55);
+
+  --fx-glow-accent-soft: rgb(202 255 0 / 0.14);
+  --fx-glow-accent: rgb(202 255 0 / 0.16);
+  --fx-glow-accent-strong: rgb(202 255 0 / 0.25);
+
+  --fx-glow-primary-tint: rgb(143 136 255 / 0.35);
+  --fx-glow-primary-soft-alt: rgb(75 92 255 / 0.18);
+  --fx-glow-info: rgb(69 217 255 / 0.35);
+  --fx-glow-accent-soft-alt: rgb(217 255 56 / 0.28);
+  --fx-glow-warning: rgb(255 123 115 / 0.28);
+}
