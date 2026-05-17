@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       titleTemplate: '%s | PromptEdit',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'theme-color', content: '#0a0d12' },
+        { name: 'theme-color', content: '#03050b' },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
