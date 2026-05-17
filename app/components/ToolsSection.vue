@@ -204,6 +204,8 @@ onMounted(() => {
   <section
       id="tools"
       ref="sectionRef"
+      data-nav-shift="0"
+      data-nav-shift-lg="124"
       class="relative isolate z-30 min-h-screen min-w-full w-full overflow-hidden bg-canvas-lab px-4 pb-24 pt-24 text-paper sm:px-6 lg:mt-[280svh] lg:px-10 lg:pb-28 lg:pt-28"
   >
     <div

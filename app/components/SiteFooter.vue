@@ -34,7 +34,7 @@ const handleNavClick = (href: string) => {
 <template>
   <footer
       data-site-footer
-      class="relative z-40 -mt-[1px] flex min-h-screen min-w-full w-full items-center overflow-hidden bg-accent px-4 py-16 text-ink shadow-[0_-40px_120px_var(--fx-shadow-ink-panel)] sm:px-6 lg:mt-[96svh] lg:rounded-t-[2rem] lg:px-10 lg:py-20"
+      class="relative z-40 -mt-[1px] flex min-h-screen min-w-full w-full items-center overflow-hidden bg-accent px-4 py-16 text-ink shadow-[0_-40px_120px_var(--fx-shadow-ink-panel)] sm:px-6 lg:sticky lg:bottom-0 lg:rounded-t-[2rem] lg:px-10 lg:py-20"
   >
     <div
         class="pointer-events-none absolute inset-0 opacity-[0.16]
