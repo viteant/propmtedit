@@ -135,6 +135,10 @@ onBeforeUnmount(destroy)
                 <img
                     src="/images/badtools.png"
                     alt="Multiple AI tools with separate subscriptions"
+                    width="1448"
+                    height="1086"
+                    loading="eager"
+                    decoding="async"
                     class="h-auto w-full select-none object-contain drop-shadow-[0_45px_100px_var(--fx-shadow-ink-card)]"
                     draggable="false"
                 >
@@ -154,6 +158,10 @@ onBeforeUnmount(destroy)
                 <img
                     src="/images/goodbucket.png"
                     alt="All AI tools organized inside one bucket"
+                    width="1448"
+                    height="1086"
+                    loading="eager"
+                    decoding="async"
                     class="h-auto w-full select-none object-contain drop-shadow-[0_45px_100px_var(--fx-shadow-ink-card)]"
                     draggable="false"
                 >
@@ -293,6 +301,10 @@ onBeforeUnmount(destroy)
         <img
             src="/images/badtools.png"
             alt="Multiple AI tools with separate subscriptions"
+            width="1448"
+            height="1086"
+            loading="lazy"
+            decoding="async"
             class="w-full object-contain"
             draggable="false"
         >
@@ -305,6 +317,10 @@ onBeforeUnmount(destroy)
         <img
             src="/images/goodbucket.png"
             alt="All AI tools organized inside one bucket"
+            width="1448"
+            height="1086"
+            loading="lazy"
+            decoding="async"
             class="w-full object-contain"
             draggable="false"
         >

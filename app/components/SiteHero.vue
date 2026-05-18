@@ -5,6 +5,7 @@ import { useSectionNavigation } from '~/composables/useSectionNavigation'
 const heroRef = ref<HTMLElement | null>(null)
 const videoScrollRef = ref<HTMLElement | null>(null)
 const videoCardRef = ref<HTMLElement | null>(null)
+const isClient = ref(false)
 const { scrollToSection } = useSectionNavigation()
 
 const {
@@ -18,7 +19,10 @@ const {
   videoCardRef,
 })
 
-onMounted(initAnimation)
+onMounted(() => {
+  isClient.value = true
+  initAnimation()
+})
 onBeforeUnmount(destroyAnimation)
 </script>
 
@@ -115,15 +119,22 @@ onBeforeUnmount(destroyAnimation)
 
             <div
                 class="aspect-video overflow-hidden rounded-[1.1rem] border border-paper/15 bg-ink md:rounded-[1.5rem]">
-              <iframe
-                  src="https://fast.wistia.net/embed/iframe/eu37od3pav?seo=false&videoFoam=true"
-                  title="Ai tool vs marketplace"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowfullscreen
-                  class="h-full w-full border-0"
-                  @pointerenter="enterVideo"
-                  @focus="enterVideo"
-              />
+              <ClientOnly>
+                <iframe
+                    v-if="isClient"
+                    src="https://fast.wistia.net/embed/iframe/eu37od3pav?seo=false&videoFoam=true"
+                    title="Ai tool vs marketplace"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen
+                    class="h-full w-full border-0"
+                    @pointerenter="enterVideo"
+                    @focus="enterVideo"
+                />
+
+                <template #fallback>
+                  <div class="h-full w-full bg-ink" />
+                </template>
+              </ClientOnly>
             </div>
           </div>
         </div>

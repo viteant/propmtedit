@@ -44,6 +44,10 @@ const handleNavClick = (href: string) => {
         <img
             src="/images/logo.png"
             alt="PromptEdit"
+            width="2560"
+            height="479"
+            fetchpriority="high"
+            decoding="async"
             class="h-7 w-auto md:h-8"
         >
       </NuxtLink>

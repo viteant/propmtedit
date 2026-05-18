@@ -141,6 +141,9 @@ onBeforeUnmount(() => {
                 <img
                     :src="testimonial.image"
                     :alt="testimonial.name"
+                    width="1080"
+                    height="1080"
+                    decoding="async"
                     class="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-110 group-hover:grayscale-0"
                     loading="lazy"
                 >
