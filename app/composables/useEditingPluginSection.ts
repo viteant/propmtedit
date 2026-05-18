@@ -38,27 +38,6 @@ export const useEditingPluginSection = ({
                                         }: UseEditingPluginSectionOptions) => {
     let ctx: gsap.Context | null = null
 
-    const wistiaId = '821b33oy7g'
-
-    const videoUrl = computed(() => {
-        const params = new URLSearchParams({
-            background: 'true',
-            autoPlay: 'true',
-            muted: 'true',
-            loop: 'true',
-            playsinline: 'true',
-            seo: 'false',
-            videoFoam: 'true',
-            playbar: 'false',
-            controlsVisibleOnLoad: 'false',
-            fullscreenButton: 'false',
-            smallPlayButton: 'false',
-            volumeControl: 'false',
-        })
-
-        return `https://fast.wistia.net/embed/iframe/${wistiaId}?${params.toString()}`
-    })
-
     const apps: EditingPluginApp[] = [
         {
             id: 'premiere-pro',
@@ -376,7 +355,6 @@ export const useEditingPluginSection = ({
     return {
         apps,
         features,
-        videoUrl,
         init,
         destroy,
     }

@@ -14,6 +14,7 @@ const carouselRef = defineModel<HTMLElement | null>('carouselRef')
 
 const activeVoiceTool = ref<ToolItem | null>(null)
 const isClient = ref(false)
+const animationThumbs = ref<Record<string, string>>({})
 
 const toolIcons = {
   image: 'lucide:image',
@@ -46,8 +47,42 @@ const getWistiaEmbedUrl = (tool: ToolItem) => {
   return `https://fast.wistia.net/embed/iframe/${wistiaId}?${params.toString()}`
 }
 
+const hasAnimation = (tool: ToolItem) => {
+  return Boolean(tool.animation)
+}
+
 const shouldShowEmbed = (tool: ToolItem) => {
-  return tool.category !== 'voice'
+  return tool.category !== 'voice' && !hasAnimation(tool)
+}
+
+const getToolThumbnail = (tool: ToolItem) => {
+  return animationThumbs.value[tool.id] || tool.thumbnail
+}
+
+const captureAnimationThumbnail = (tool: ToolItem, event: Event) => {
+  if (!import.meta.client || animationThumbs.value[tool.id]) return
+
+  const video = event.currentTarget as HTMLVideoElement | null
+
+  if (!video || video.readyState < 2) return
+
+  const canvas = document.createElement('canvas')
+  canvas.width = video.videoWidth || 960
+  canvas.height = video.videoHeight || 540
+
+  const context = canvas.getContext('2d')
+
+  if (!context) return
+
+  try {
+    context.drawImage(video, 0, 0, canvas.width, canvas.height)
+    animationThumbs.value = {
+      ...animationThumbs.value,
+      [tool.id]: canvas.toDataURL('image/jpeg', 0.82),
+    }
+  } catch {
+    // Ignore thumbnail extraction issues and keep the configured fallback image.
+  }
 }
 
 const openVoicePopup = (tool: ToolItem) => {
@@ -118,7 +153,32 @@ onBeforeUnmount(() => {
         xl:w-[calc((100%-3.75rem)/4)]"
           @click="handleToolClick(tool)"
       >
-        <ClientOnly v-if="shouldShowEmbed(tool)">
+        <ClientOnly v-if="hasAnimation(tool)">
+          <video
+              v-if="isClient"
+              :poster="getToolThumbnail(tool)"
+              class="absolute inset-0 h-full w-full object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              @loadeddata="captureAnimationThumbnail(tool, $event)"
+          >
+            <source :src="tool.animation" type="video/webm">
+          </video>
+
+          <template #fallback>
+            <img
+                :src="getToolThumbnail(tool)"
+                :alt="tool.title"
+                class="absolute inset-0 h-full w-full object-cover"
+                draggable="false"
+            >
+          </template>
+        </ClientOnly>
+
+        <ClientOnly v-else-if="shouldShowEmbed(tool)">
           <iframe
               v-if="isClient"
               :src="getWistiaEmbedUrl(tool)"
@@ -130,7 +190,7 @@ onBeforeUnmount(() => {
 
           <template #fallback>
             <img
-                :src="tool.thumbnail"
+                :src="getToolThumbnail(tool)"
                 :alt="tool.title"
                 class="absolute inset-0 h-full w-full object-cover"
                 draggable="false"
@@ -139,8 +199,8 @@ onBeforeUnmount(() => {
         </ClientOnly>
 
         <img
-            v-if="!shouldShowEmbed(tool)"
-            :src="tool.thumbnail"
+            v-if="!shouldShowEmbed(tool) && !hasAnimation(tool)"
+            :src="getToolThumbnail(tool)"
             :alt="tool.title"
             class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
             draggable="false"

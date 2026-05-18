@@ -14,7 +14,6 @@ const isClient = ref(false)
 const {
   apps,
   features,
-  videoUrl,
   init,
   destroy,
 } = useEditingPluginSection({
@@ -207,14 +206,17 @@ onBeforeUnmount(() => {
 
             <div class="relative aspect-video bg-ink">
               <ClientOnly>
-                <iframe
+                <video
                     v-if="isClient"
-                    :src="videoUrl"
-                    title="Editing plugin"
                     class="absolute inset-0 h-full w-full"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowfullscreen
-                />
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                >
+                  <source src="/animations/EditingPlugin.webm" type="video/webm">
+                </video>
 
                 <template #fallback>
                   <div class="absolute inset-0 bg-ink" />

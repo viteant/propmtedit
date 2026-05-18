@@ -8,7 +8,7 @@ export interface CreatorStackItem {
     eyebrow: string
     description: string
     metric: string
-    wistiaId: string
+    animation: string
     accent: 'blue' | 'lime'
 }
 
@@ -40,7 +40,7 @@ export const useCreatorStack = ({
             eyebrow: 'Color grading presets',
             description: 'Give your footage a cinematic look in seconds.',
             metric: '4,000+ LUTs',
-            wistiaId: 't21vfpbv9s',
+            animation: '/animations/stack/Luts.webm',
             accent: 'lime',
         },
         {
@@ -49,7 +49,7 @@ export const useCreatorStack = ({
             eyebrow: 'Cinematic SFX library',
             description: 'Production-ready audio for edits, ads, reels, and stories.',
             metric: '60,000+ SFX',
-            wistiaId: 'ucv3bj2w6o',
+            animation: '/animations/stack/SoundEffects.webm',
             accent: 'blue',
         },
         {
@@ -58,7 +58,7 @@ export const useCreatorStack = ({
             eyebrow: 'Titles, lower thirds & more',
             description: 'Animated text assets built for fast editing workflows.',
             metric: '10,000+ templates',
-            wistiaId: 'lgoc5cbukb',
+            animation: '/animations/stack/CustomText.webm',
             accent: 'lime',
         },
         {
@@ -66,8 +66,8 @@ export const useCreatorStack = ({
             title: 'Overlays',
             eyebrow: 'Film overlays & FX',
             description: 'Add atmosphere, light leaks, texture, and cinematic depth.',
+            animation: '/animations/stack/Overlays.webm',
             metric: '2,000+ overlays',
-            wistiaId: '0ktyx14pqx',
             accent: 'blue',
         },
         {
@@ -75,8 +75,8 @@ export const useCreatorStack = ({
             title: 'Backgrounds',
             eyebrow: 'Stock video & textures',
             description: 'Fill scenes, intros, promos, and edits with ready-to-use visuals.',
+            animation: '/animations/stack/Backgrounds.webm',
             metric: '50,000+ assets',
-            wistiaId: 'jjyedmmpr9',
             accent: 'lime',
         },
     ]
@@ -107,25 +107,6 @@ export const useCreatorStack = ({
             label: 'Creator toolkit',
         },
     ]
-
-    const getWistiaEmbedUrl = (wistiaId: string) => {
-        const params = new URLSearchParams({
-            background: 'true',
-            autoPlay: 'true',
-            muted: 'true',
-            loop: 'true',
-            playsinline: 'true',
-            seo: 'false',
-            videoFoam: 'true',
-            playbar: 'false',
-            controlsVisibleOnLoad: 'false',
-            fullscreenButton: 'false',
-            smallPlayButton: 'false',
-            volumeControl: 'false',
-        })
-
-        return `https://fast.wistia.net/embed/iframe/${wistiaId}?${params.toString()}`
-    }
 
     const init = () => {
         if (!sectionRef.value) return
@@ -356,7 +337,6 @@ export const useCreatorStack = ({
     return {
         stackItems,
         stats,
-        getWistiaEmbedUrl,
         init,
         destroy,
     }

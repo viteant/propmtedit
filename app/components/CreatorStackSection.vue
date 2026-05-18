@@ -13,7 +13,6 @@ const isClient = ref(false)
 const {
   stackItems,
   stats,
-  getWistiaEmbedUrl,
   init,
   destroy,
 } = useCreatorStack({
@@ -162,14 +161,18 @@ onBeforeUnmount(() => {
           >
             <div class="relative aspect-[45/13] w-full overflow-hidden">
               <ClientOnly>
-                <iframe
+                <video
                     v-if="isClient"
-                    :src="getWistiaEmbedUrl(item.wistiaId)"
-                    :title="item.title"
+                    :key="item.animation"
                     class="pointer-events-none absolute inset-0 h-full w-full scale-[1.02]"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowfullscreen
-                />
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                >
+                  <source :src="item.animation" type="video/webm">
+                </video>
 
                 <template #fallback>
                   <div class="absolute inset-0 bg-canvas-stack" />
