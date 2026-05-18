@@ -112,8 +112,8 @@ onBeforeUnmount(destroy)
                   Bad
                 </h3>
 
-                <p class="mt-2 text-lg font-black leading-none tracking-[-0.04em] text-paper/86">
-                  Prompt<span class="text-secondary">Edit</span>
+                <p class="mt-2 text-lg font-black leading-none tracking-[-0.04em] text-paper/86 line-through">
+                  <span class="text-accent">Before</span> Prompt<span class="text-secondary">Edit</span>
                 </p>
 
                 <div
@@ -195,7 +195,7 @@ onBeforeUnmount(destroy)
                 </h3>
 
                 <p class="mt-2 text-lg font-black leading-none tracking-[-0.04em] text-paper/86">
-                  Prompt<span class="text-secondary">Edit</span>
+                  <span class="text-accent">After</span> Prompt<span class="text-secondary">Edit</span>
                 </p>
 
                 <div

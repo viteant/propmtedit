@@ -49,9 +49,9 @@ export const useTestimonialsSection = ({
             accent: 'lime',
         },
         {
-            id: 'matt-illey',
+            id: 'matt-lilley',
             quote: 'My videos would not look half as good if it was not for the Content Creator Templates Library.',
-            name: 'Matt Illey',
+            name: 'Matt Lilley',
             role: 'ContentCreator.com student',
             initials: 'MI',
             image: '/images/testimonials/02.jpg',
